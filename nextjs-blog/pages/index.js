@@ -4,9 +4,16 @@ import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
+//import fetch from 'node-fetch'
 
-export default function Home({ allPostsData }) {
+export  function Home({ allPostsData }) {
+
+
+
+
+
   return (
+
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
@@ -37,7 +44,7 @@ export default function Home({ allPostsData }) {
     </Layout>
   )
 }
-
+/*
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
@@ -46,3 +53,44 @@ export async function getStaticProps() {
     }
   }
 }
+*/
+
+function Blog({ posts }) {
+  return (
+    <div>
+    <div><div className={utilStyles.PostDetailDiv}>user id</div><div className={utilStyles.PostDetailDiv}>title</div></div>
+      {posts.map((post) => (
+        <div>
+        <div className={utilStyles.PostDetailDiv}>{ post.id}</div>
+        <div className={utilStyles.PostDetailDiv}>{ post.title}</div>
+        </div>
+        
+      ))}
+    
+
+    
+
+
+
+</div>
+    
+  )
+}
+
+
+export async function getStaticProps() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos')
+  const posts = await res.json()
+
+  return {
+    props: {
+      posts,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // In seconds
+  }
+}
+
+export default Blog

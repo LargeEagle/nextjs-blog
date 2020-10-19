@@ -1,9 +1,9 @@
-import fs from 'fs'
+//import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
-
+/*
 const postsDirectory = path.join(process.cwd(), 'posts')
 
 export function getSortedPostsData() {
@@ -67,3 +67,4 @@ export async function getPostData(id) {
     ...matterResult.data
   }
 }
+*/
