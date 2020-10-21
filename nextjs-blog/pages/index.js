@@ -5,13 +5,32 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 //import fetch from 'node-fetch'
+import React from 'react';
+
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography'
+
+import { DataGrid, RowsProp, ColDef } from '@material-ui/data-grid';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
+  },
+  paper: {
+    maxWidth: 400,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+  },
+}));
 
 export  function Home({ allPostsData }) {
-
-
-
-
-
   return (
 
     <Layout home>
@@ -55,8 +74,36 @@ export async function getStaticProps() {
 }
 */
 
+
+
+
 function Blog({ posts }) {
+  const classes = useStyles();
+
+
+  const columns = [
+    { field: 'userId'},
+    { field: 'id'},
+    { field: 'title',width:200},
+    { field:  'completed'},
+    
+  ];
+  
+  const rows = [
+    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  ];
+
+  
   return (
+    /*
     <div>
     <div><div className={utilStyles.PostDetailDiv}>user id</div><div className={utilStyles.PostDetailDiv}>title</div></div>
       {posts.map((post) => (
@@ -66,15 +113,38 @@ function Blog({ posts }) {
         </div>
         
       ))}
-    
-
-    
-
+    </div>
+*/
 
 
-</div>
-    
-  )
+<div className={classes.root}>
+
+
+
+
+<div style={{ height: 400, width: '100%' }}>
+      <DataGrid rows={
+        posts.map((post) => ({...post}) )
+
+      } columns={columns} pageSize={5} checkboxSelection />
+    </div>
+
+{ /*posts.map((post) => (
+  <Paper className={classes.paper}>
+    <Grid container wrap="nowrap" spacing={2}>
+      <Grid item>
+        <Avatar>{ post.id}</Avatar>
+      </Grid>
+      <Grid item xs zeroMinWidth>
+        <Typography >{post.title}</Typography>
+      </Grid>
+    </Grid>
+  </Paper> 
+  
+))*/} 
+
+    </div>
+)
 }
 
 
