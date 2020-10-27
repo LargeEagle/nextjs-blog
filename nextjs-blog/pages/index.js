@@ -12,6 +12,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container';
+//import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+
 
 import { DataGrid, RowsProp, ColDef } from '@material-ui/data-grid';
 
@@ -22,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     overflow: 'hidden',
     padding: theme.spacing(0, 3),
+    
   },
   paper: {
     maxWidth: 400,
@@ -82,24 +87,14 @@ function Blog({ posts }) {
 
 
   const columns = [
-    { field: 'userId'},
-    { field: 'id'},
-    { field: 'title',width:200},
-    { field:  'completed'},
+    { field: 'userId',width:110},
+    { field: 'id',width:80},
+    { field: 'title',width:500},
+    { field:  'completed',width:150},
     
   ];
   
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ];
+  
 
   
   return (
@@ -122,11 +117,15 @@ function Blog({ posts }) {
 
 
 
-<div style={{ height: 400, width: '100%' }}>
+<div style={{ height: '600px', width: '100%' }}>
       <DataGrid rows={
         posts.map((post) => ({...post}) )
 
-      } columns={columns} pageSize={5} checkboxSelection />
+      } columns={columns} pageSize={20} loading={posts.length === 0} rowHeight={50} 
+      rowsPerPageOptions={[20, 40, 80]}
+
+
+      checkboxSelection />
     </div>
 
 { /*posts.map((post) => (
@@ -148,6 +147,49 @@ function Blog({ posts }) {
 }
 
 
+function dataGrim({posts}) {
+  const classes = useStyles();
+
+  return(
+
+    <div>
+              <Container maxWidth="sm">
+
+          <form className={classes.root} noValidate autoComplete="off">
+
+          <TextField id="standard-search" label="Search field" type="search" />
+</form>
+    {posts.map((post) => (  
+      <div>
+
+  <Paper className={classes.paper}>
+    <Grid container wrap="nowrap" spacing={2}>
+      <Grid item>
+        <Avatar>{ post.id}</Avatar>
+      </Grid>
+      <Grid item xs zeroMinWidth>
+        <Typography >{post.title}</Typography>
+      </Grid>
+    </Grid>
+  </Paper> 
+  </div>
+  ))}
+
+  </Container>
+
+ </div>
+
+    )}
+
+    function mainContent(){
+return(
+
+  {dataGrim}
+)
+
+    }
+
+
 export async function getStaticProps() {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos')
   const posts = await res.json()
@@ -163,4 +205,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Blog
+export default dataGrim
