@@ -159,22 +159,23 @@ function dataGrim({posts}) {
 
           <TextField id="standard-search" label="Search field" type="search" />
 </form>
-    {posts.map((post) => (  
+    { posts.results.map((post) => (  
       <div>
 
   <Paper className={classes.paper}>
-    <Grid container wrap="nowrap" spacing={2}>
+    <Grid container wrap="nowrap" spacing={3}>
       <Grid item>
-        <Avatar>{ post.id}</Avatar>
+        <Avatar>{ post.mass}</Avatar>
       </Grid>
       <Grid item xs zeroMinWidth>
-        <Typography >{post.title}</Typography>
+        <Typography >{post.name}</Typography>
       </Grid>
     </Grid>
   </Paper> 
   </div>
-  ))}
+    )) }
 
+{console.log(posts.results)}
   </Container>
 
  </div>
@@ -191,9 +192,8 @@ return(
 
 
 export async function getStaticProps() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos')
+  const res = await fetch('https://swapi.dev/api/people/?page=2')
   const posts = await res.json()
-
   return {
     props: {
       posts,
