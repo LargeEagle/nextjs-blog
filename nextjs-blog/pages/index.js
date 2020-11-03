@@ -20,6 +20,9 @@ import TextField from '@material-ui/core/TextField';
 import { DataGrid, RowsProp, ColDef } from '@material-ui/data-grid';
 
 
+import {ScrollComponent} from '../lib/ScrollComponent'
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -184,8 +187,9 @@ function dataGrim({posts}) {
 
     function mainContent(){
 return(
-
-  {dataGrim}
+<div>
+  <ScrollComponent/>
+  </div>
 )
 
     }
@@ -205,4 +209,4 @@ export async function getStaticProps() {
   }
 }
 
-export default dataGrim
+export default mainContent
