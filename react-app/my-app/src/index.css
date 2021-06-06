@@ -17,6 +17,14 @@ div.userList > div {
   flex-grow: 1;
   text-align: left;
 }
+
+.AddNewUser > div.Name,
+.AddNewUser > div.Age,
+.AddNewUser > div.Job {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

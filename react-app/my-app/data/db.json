@@ -1,7 +1,28 @@
 {
   "users": [
-    { "name": "Peter", "age": 15, "job": "student", "id": 1 },
-    { "name": "Tony", "age": 25, "job": "driver", "id": 2 },
-    { "name": "Steve", "age": 30, "job": "soldier", "id": 3 }
+    {
+      "name": "Peter",
+      "age": 15,
+      "job": "student",
+      "id": 1
+    },
+    {
+      "name": "Tony",
+      "age": 25,
+      "job": "driver",
+      "id": 2
+    },
+    {
+      "name": "Steve",
+      "age": 30,
+      "job": "soldier",
+      "id": 3
+    },
+    {
+      "name": "Steves",
+      "age": 30,
+      "job": "soldier",
+      "id": 4
+    }
   ]
 }
