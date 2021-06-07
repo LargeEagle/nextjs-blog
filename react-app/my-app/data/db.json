@@ -19,9 +19,9 @@
       "id": 3
     },
     {
-      "name": "Steves",
-      "age": 30,
-      "job": "soldier",
+      "name": "bruce",
+      "age": "50",
+      "job": "super hero",
       "id": 4
     }
   ]
