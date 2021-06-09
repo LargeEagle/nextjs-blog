@@ -4,10 +4,10 @@ const CreateNewUser = () => {
   const [newUserName, setNewUserName] = useState(null);
   const [newUserAge, setNewUserAge] = useState(null);
   const [newUserJob, setNewUserJob] = useState(null);
+  modify;
+  const data = { name: newUserName, age: newUserAge, job: newUserJob };
 
   const addNewUser = () => {
-    const data = { name: newUserName, age: newUserAge, job: newUserJob };
-
     fetch("http://localhost:8000/users", {
       method: "POST", // or 'PUT'
       headers: {

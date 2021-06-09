@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const handleDelUser = (id) => {
   var url = "http://localhost:8000/users/" + id;
@@ -13,6 +13,7 @@ const handleDelUser = (id) => {
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
     .then((response) => console.log("Success:", response));
+
   console.log("deleted ID: " + id);
 };
 

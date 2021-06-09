@@ -11,11 +11,14 @@ body {
 div.userList {
   display: flex;
   padding: 10px;
+  justify-content: center;
 }
 
 div.userList > div {
   flex-grow: 1;
   text-align: left;
+  width: 1.2em;
+  max-width: 200px;
 }
 
 .AddNewUser > div.Name,
