@@ -4,7 +4,7 @@ const CreateNewUser = () => {
   const [newUserName, setNewUserName] = useState(null);
   const [newUserAge, setNewUserAge] = useState(null);
   const [newUserJob, setNewUserJob] = useState(null);
-  modify;
+
   const data = { name: newUserName, age: newUserAge, job: newUserJob };
 
   const addNewUser = () => {

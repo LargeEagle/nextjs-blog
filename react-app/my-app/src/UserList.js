@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const handleDelUser = (id) => {
-  var url = "http://localhost:8000/users/" + id;
+const HandleDelUser = (id) => {
+  let url = "http://localhost:8000/users/" + id;
 
   fetch(url, {
     method: "DELETE", // or 'PUT'
@@ -25,7 +25,7 @@ function UserList({ users }) {
           <div className="name">Name : {item.name}</div>
           <div className="age">Age: {item.age}</div>
           <div className="job">Job: {item.job}</div>
-          <button onClick={() => handleDelUser(item.id)}>Del</button>
+          <button onClick={() => HandleDelUser(item.id)}>Del</button>
         </div>
       ))}
     </div>
